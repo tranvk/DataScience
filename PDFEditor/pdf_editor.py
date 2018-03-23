@@ -11,8 +11,6 @@ def PDFtoString (file):
 
         pdfFileObj = open (file, 'rb') #open pdf in read binary mode
 
-
-
     pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
 
     #test if library is working
@@ -26,4 +24,4 @@ def PDFtoString (file):
 
     print(pageString)
 
-print (PDFtoString('meetingminutes2.pdf'))
+print (PDFtoString('meetingminutes.pdf'))
