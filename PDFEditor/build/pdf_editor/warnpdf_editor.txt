@@ -1,0 +1,22 @@
+missing module named 'org.python' - imported by pickle, xml.sax, /home/kevin/Documents/Data Science/Projects/PDFEditor/pdf_editor.py
+excluded module named _frozen_importlib - imported by importlib, importlib.abc, /home/kevin/Documents/Data Science/Projects/PDFEditor/pdf_editor.py
+missing module named _frozen_importlib_external - imported by importlib._bootstrap, importlib, importlib.abc, /home/kevin/Documents/Data Science/Projects/PDFEditor/pdf_editor.py
+missing module named _winreg - imported by platform, /home/kevin/Documents/Data Science/Projects/PDFEditor/pdf_editor.py
+missing module named _scproxy - imported by urllib.request
+missing module named java - imported by platform, /home/kevin/Documents/Data Science/Projects/PDFEditor/pdf_editor.py
+missing module named 'java.lang' - imported by platform, xml.sax._exceptions, /home/kevin/Documents/Data Science/Projects/PDFEditor/pdf_editor.py
+missing module named vms_lib - imported by platform, /home/kevin/Documents/Data Science/Projects/PDFEditor/pdf_editor.py
+missing module named winreg - imported by platform, mimetypes, urllib.request, /home/kevin/Documents/Data Science/Projects/PDFEditor/pdf_editor.py
+missing module named nt - imported by os, ntpath, shutil, pathlib, /home/kevin/Documents/Data Science/Projects/PDFEditor/pdf_editor.py
+missing module named msvcrt - imported by subprocess, getpass, /home/kevin/Documents/Data Science/Projects/PDFEditor/pdf_editor.py
+missing module named _winapi - imported by subprocess, /home/kevin/Documents/Data Science/Projects/PDFEditor/pdf_editor.py
+missing module named _dummy_threading - imported by dummy_threading, /home/kevin/Documents/Data Science/Projects/PDFEditor/pdf_editor.py
+missing module named org - imported by copy, /home/kevin/Documents/Data Science/Projects/PDFEditor/pdf_editor.py
+missing module named __builtin__ - imported by PyPDF2.utils
+missing module named cStringIO - imported by PyPDF2.pdf, PyPDF2.filters, PyPDF2.merger
+missing module named copy_reg - imported by cStringIO
+missing module named md5 - imported by PyPDF2.pdf
+missing module named sets - imported by PyPDF2.pdf
+missing module named netbios - imported by uuid
+missing module named win32wnet - imported by uuid
+missing module named System - imported by PyPDF2.filters
