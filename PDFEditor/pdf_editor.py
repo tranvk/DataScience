@@ -56,7 +56,7 @@ def PDFtoString (file_name):
 
 def main():
 
-    PDFwords = PDFtoString('meetingminutes.pdf')
+    PDFwords = PDFtoString('coverletter.pdf')
 
     new_company = input("Enter the company name: ")
 
