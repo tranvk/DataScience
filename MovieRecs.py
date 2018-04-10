@@ -16,11 +16,12 @@ movieNormalizedNumRatings = movieNumRatings.apply(lambda x: (x - np.min(x))/(np.
 
 movieDict = {}
 
-with open (r'/home/kevin/Documents/Data Science/DataScience-Python3/ml-100k/u.data') as file_:
+with open (r'/home/kevin/Documents/Data Science/DataScience-Python3/ml-100k/u.item', encoding = "ISO-8859-1") as file_:
 
     temp = ''
 
-    for line in file_:  #line.decode("ISO-8859-1")
+    for line in file_:
+        #line.decode("ISO-8859-1")
         fields = line.rstrip('\n').split('|')
         movieID = int(fields[0])
         name = fields[1]
@@ -43,7 +44,7 @@ def ComputeDistance(a, b):
     popularityB = b[2]
     popularityDistance = abs(popularityA - popularityB)
 
-    return genreDistance + popularDistance
+    return genreDistance + popularityDistance
 
 
 #compute distance between a test movie and all the movies on the data set, print out K nearest neighbors
@@ -73,3 +74,20 @@ for neighbor in neighbors:
     print (movieDict[neighbor][0] + " " + str(movieDict[neighbor][3]))
 
 avgRating /= K
+
+def error(result, actual):
+
+    return (actual - result)
+
+
+#check if movie exists
+#param: movie name + the year
+def findMovieByName(name):
+
+    if name in movieDict:
+        return True
+    else:
+        return False
+
+print (findMovieByName("Aladdin (1992)"))
+print (movieDict)
