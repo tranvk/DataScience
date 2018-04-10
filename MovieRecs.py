@@ -45,29 +45,31 @@ def ComputeDistance(a, b):
 
     return genreDistance + popularDistance
 
-m_cols = ["movie_id", "title"]
 
-movies = pd.read_csv("/home/kevin/Documents/Data Science/DataScience-Python3/ml-100k/u.item", sep = '|', names = m_cols, usecols= range(2), encoding = "ISO-8859-1")
+#compute distance between a test movie and all the movies on the data set, print out K nearest neighbors
 
-ratings = pd.merge(movies,ratings)
+def getNeighbors(movieID, K):
 
-movieRatings = ratings.pivot_table(index = ['user_id'], columns = ['title'], values ='rating')
+    distances = []
 
-starWarsRatings = movieRatings['Star Wars (1977)']
+    for movie in movieDict:
+        if (movie!= movieID):
+            dist = ComputeDistance(movieDict[movieID], movieDict[movie])
+            distances.append((movie,dist))
 
-similarMovies = movieRatings.corrwith(starWarsRatings) #compute pairwise correlation
-similarMovies = similarMovies.dropna() #drop NaN RESULTS
-df = pd.DataFrame(similarMovies)
+    distances.sort(key = operator.itemgetter(1))
+    neighbors = []
 
-similarMovies.sort_values(ascending = False)
+    for x in range(K):
+        neighbors.append(distances[x][0])
 
-movieStats = ratings.groupby('title').agg({'rating': [np.size, np.mean]})
+    return neighbors
 
-popularMovies = movieStats['rating']['size'] >= 100
-movieStats[popularMovies].sort_values([('rating', 'mean')], ascending = False)[:15]
+K = 10
+avgRating = 0
+neighbors = getNeighbors(1, K)
+for neighbor in neighbors:
+    avgRating += movieDict[neighbor][3]
+    print (movieDict[neighbor][0] + " " + str(movieDict[neighbor][3]))
 
-df = movieStats[popularMovies].join(pd.DataFrame(similarMovies, columns = ['similarity']))
-
-df.sort_values(['similarity'], ascending = False)[:15]
-
-print(df)
+avgRating /= K
