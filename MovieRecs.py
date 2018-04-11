@@ -90,4 +90,3 @@ def findMovieByName(name):
         return False
 
 print (findMovieByName("Aladdin (1992)"))
-print (movieDict)
