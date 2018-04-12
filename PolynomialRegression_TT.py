@@ -12,9 +12,9 @@ from sklearn.metrics import r2_score
 """
 
 
-# Simple Data Set for model
+# Simple Data Set for model, correlation between web page speeds and customer purchaseAmount
 
-np.random.seed(2)
+np.random.seed(3)
 
 pageSpeeds = np.random.normal(3, 1, 100)
 purchaseAmount = np.random.normal(50, 30, 100)/pageSpeeds
@@ -75,3 +75,9 @@ print("The R-squared for the training data is: ", r2_training)
 
 if (r2_training > 0.75):
     print("The", degree, "degree polynomial is a strong fit!" )
+
+    if (r2_test < 0):
+        print("But you are seriously overfitting...")
+
+    else:
+        print ("Your model is not overfitting that much.")
