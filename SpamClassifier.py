@@ -37,3 +37,6 @@ def dataFrameFromDirectory(path, classification):
 
     for filename, message in readFiles(path):
         rows.append({'message': message, 'class': classification})
+        index.append(filename)
+
+    return DataFrame(rows, index = index)
