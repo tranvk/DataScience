@@ -52,43 +52,20 @@ data = data.append(dataFrameFromDirectory('/home/kevin/Documents/Data Science/Da
 
 #implement train/test
 
+
 train,test = train_test_split(data, test_size = 0.2)
 
 #split up each message into its list of words
-#train the vectorizer on training set (80 percent)
-vectorizer_train = CountVectorizer()
-counts_train = vectorizer_train.fit_transform(train['message'].values) #email contents
+#train model on training data set
+#test this model with a prediction based off of test data set
+vectorizer = CountVectorizer()
+counts = vectorizer.fit_transform(train['message'].values) #email contents
 
-classifier_train = MultinomialNB()
-targets_train = train['class'].values
-classifier_train.fit(counts_train,targets_train)
-
-#train a different vectorizer on test set
-vectorizer_test = CountVectorizer()
-counts_test = vectorizer_test.fit_transform(test['message'].values) #email contents
-
-classifier_test = MultinomialNB()
-targets_test = test['class'].values
-classifier_test.fit(counts_test,targets_test)
+classifier = MultinomialNB()
+targets = train['class'].values
+classifier.fit(counts,targets)
 
 
-#try your code
-
-examples = [' Viagra free now!!!', " this is spam free", 'sdfasdf', "Hi Bob, how  free about a game of golf tomorrow?"]
-
-
-correct_answers = ['spam', 'ham', 'spam', 'ham']
-
-example_counts_train = vectorizer_train.transform(examples)
-predictions_train = classifier_train.predict(example_counts_train)
-print(predictions_train)
-
-
-
-example_counts_test = vectorizer_test.transform(examples)
-predictions_test = classifier_test.predict(example_counts_test)
-print(predictions_test)
-
-
-if (predictions_train.all() != correct_answers):
-    print("So wrong")
+example_counts = vectorizer.transform(test)
+predictions = classifier.predict(example_counts) #predict on test
+print(predictions)
