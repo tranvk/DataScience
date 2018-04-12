@@ -57,31 +57,38 @@ train,test = train_test_split(data, test_size = 0.2)
 #split up each message into its list of words
 #train the vectorizer on training set (80 percent)
 vectorizer_train = CountVectorizer()
-counts = vectorizer_train.fit_transform(train['message'].values) #email contents
+counts_train = vectorizer_train.fit_transform(train['message'].values) #email contents
 
-classifier = MultinomialNB()
-targets = train['class'].values
-classifier.fit(counts,targets)
+classifier_train = MultinomialNB()
+targets_train = train['class'].values
+classifier_train.fit(counts_train,targets_train)
 
 #train a different vectorizer on test set
 vectorizer_test = CountVectorizer()
-counts = vectorizer_test.fit_transform(test['message'].values) #email contents
+counts_test = vectorizer_test.fit_transform(test['message'].values) #email contents
 
-classifier = MultinomialNB()
-targets = test['class'].values
-classifier.fit(counts,targets)
+classifier_test = MultinomialNB()
+targets_test = test['class'].values
+classifier_test.fit(counts_test,targets_test)
 
 
 #try your code
 
-examples = [' Viagra free now!!!', " this is spam free", 'sdfasdf', "Hi free viagra Bob, how  free about a game of golf tomorrow?"]
+examples = [' Viagra free now!!!', " this is spam free", 'sdfasdf', "Hi Bob, how  free about a game of golf tomorrow?"]
+
+
+correct_answers = ['spam', 'ham', 'spam', 'ham']
 
 example_counts_train = vectorizer_train.transform(examples)
-predictions_train = classifier.predict(example_counts_train)
+predictions_train = classifier_train.predict(example_counts_train)
 print(predictions_train)
 
 
 
 example_counts_test = vectorizer_test.transform(examples)
-predictions_test = classifier.predict(example_counts_test)
+predictions_test = classifier_test.predict(example_counts_test)
 print(predictions_test)
+
+
+if (predictions_train.all() != correct_answers):
+    print("So wrong")
