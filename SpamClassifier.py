@@ -54,3 +54,10 @@ counts = vectorizer.fit_transform(data['message'].values) #email contents
 classifier = MultinomialNB()
 targets = data['class'].values
 classifier.fit(counts,targets)
+
+#try your code
+
+examples = [' Viagra free now!!!', " this is spam free", 'sdfasdf', "Hi free viagra Bob, how  free about a game of golf tomorrow?"]
+example_counts = vectorizer.transform(examples)
+predictions = classifier.predict(example_counts)
+predictions
