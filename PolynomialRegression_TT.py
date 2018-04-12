@@ -8,6 +8,7 @@ from sklearn.metrics import r2_score
 *Randomly generated before the split
 *Goal: Test different polynomial regressions against training data
 *Correct: Why do overfitted polynomials return high r-squared?
+*And why is the test data returning negative r2?
 """
 
 
