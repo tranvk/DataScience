@@ -23,4 +23,12 @@ def createClusteredData(N, k):
 
 data = createClusteredData(100, 9)
 
-model
+model = KMeans(n_clusters = 5)
+
+model = model.fit(scale(data))
+
+print(model.labels_)
+
+plt.figure(figsize = (8,6))
+plt.scatter(data[:,0], data[:,1], c=model.labels_.astype(float))
+plt.show()
