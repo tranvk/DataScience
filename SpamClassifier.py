@@ -40,3 +40,17 @@ def dataFrameFromDirectory(path, classification):
         index.append(filename)
 
     return DataFrame(rows, index = index)
+
+data = DataFrame({'message': [],  'class': []})
+
+data = data.append(dataFrameFromDirectory('/home/kevin/Documents/Data Science/DataScience-Python3/emails/spam', 'spam'))
+data = data.append(dataFrameFromDirectory('/home/kevin/Documents/Data Science/DataScience-Python3/emails/ham', 'ham'))
+
+
+#split up each message into its list of words
+vectorizer = CountVectorizer()
+counts = vectorizer.fit_transform(data['message'].values) #email contents
+
+classifier = MultinomialNB()
+targets = data['class'].values
+classifier.fit(counts,targets)
