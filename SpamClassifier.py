@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 
 """
 *Spam classifier using naive bayes (Simplified)
-*TODO: train/test
+*TODO: train/test, currently 90 percent done
 """
 
 #read files and parse
@@ -51,8 +51,6 @@ data = data.append(dataFrameFromDirectory('/home/kevin/Documents/Data Science/Da
 data = data.append(dataFrameFromDirectory('/home/kevin/Documents/Data Science/DataScience-Python3/emails/ham', 'ham'))
 
 #implement train/test
-
-
 train,test = train_test_split(data, test_size = 0.2)
 
 #split up each message into its list of words
