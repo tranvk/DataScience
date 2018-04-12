@@ -3,6 +3,17 @@ import numpy as np
 from scipy import spatial
 import operator
 
+"""
+*@ComputeDistance: #compute distance between two movies based on how similar their genres and popularity are
+*@getNeighbors: #compute distance between a test movie and all the movies on the data set, print out K nearest neighbors
+*@findMovieByName: check if movie exists, param: movie name, the year
+*
+*
+*
+*
+*
+"""
+
 r_cols = ["user_id", "movie_id", "rating"] #column titles
 
 ratings = pd.read_csv("/home/kevin/Documents/Data Science/DataScience-Python3/ml-100k/u.data", sep = '\t', names = r_cols, usecols=range(3), encoding = "ISO-8859-1")#link to movieLens dataset
@@ -34,7 +45,6 @@ with open (r'/home/kevin/Documents/Data Science/DataScience-Python3/ml-100k/u.it
 
 
 
-#compute distance between two movies based on how similar their genres and popularity are
 def ComputeDistance(a, b):
 
     genresA = a[1]
@@ -47,7 +57,6 @@ def ComputeDistance(a, b):
     return genreDistance + popularityDistance
 
 
-#compute distance between a test movie and all the movies on the data set, print out K nearest neighbors
 
 def getNeighbors(movieID, K):
 
@@ -75,9 +84,9 @@ for neighbor in neighbors:
 
 avgRating /= K
 
-def error(result, actual):
+#def error(result, actual):
 
-    return (actual - result)
+#    return (actual - result)
 
 
 #check if movie exists
