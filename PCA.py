@@ -1,6 +1,7 @@
 from sklearn.datasets import load_iris
 from sklearn.decomposition import PCA
 from pylab import *
+from itertools import cycle
 import pylab as pl
 
 """
