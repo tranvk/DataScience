@@ -19,3 +19,14 @@ numSamples, numFeatures = iris.data.shape
 X = iris.data
 pca = PCA(n_components = 2, whiten = True).fit(X)
 X_pca = pca.transform(X)
+
+colors = cycle('rgb')
+
+target_ids = range(len(iris.target_names))
+pl.figure()
+
+for i,c, label in zip(target_ids, colors, iris.target_names):
+    pl.scatter(X_pca[iris.target -- i, 0], X_pca[iris.target == i, 1], c=c, label=label)
+
+pl.legend()
+pl.show()
