@@ -27,7 +27,7 @@ target_ids = range(len(iris.target_names))
 pl.figure()
 
 for i,c, label in zip(target_ids, colors, iris.target_names):
-    pl.scatter(X_pca[iris.target -- i, 0], X_pca[iris.target == i, 1], c=c, label=label)
+    pl.scatter(X_pca[iris.target == i, 0], X_pca[iris.target == i, 1], c=c, label=label)
 
 pl.legend()
 pl.show()
