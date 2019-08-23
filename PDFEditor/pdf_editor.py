@@ -7,12 +7,6 @@ Focus: covert PDF to python string, identify index of word to edit, modify word,
 download new PDF with new name
 '''
 
-#are all PDFs made equal in terms of encoding
-
-
-
-
-
 def changeWordByIndex(PDFString, new_word):
 
     #turn string into list of strings
@@ -25,9 +19,6 @@ def changeWordByIndex(PDFString, new_word):
     modifiedString = "".join(word_list)
 
     return modifiedString
-
-
-
 
 def PDFtoString (file_name):
 
