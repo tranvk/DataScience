@@ -84,11 +84,6 @@ for neighbor in neighbors:
 
 avgRating /= K
 
-#def error(result, actual):
-
-#    return (actual - result)
-
-
 #check if movie exists
 #param: movie name + the year
 def findMovieByName(name):
