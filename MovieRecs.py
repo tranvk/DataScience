@@ -7,27 +7,23 @@ import operator
 *@ComputeDistance: #compute distance between two movies based on how similar their genres and popularity are
 *@getNeighbors: #compute distance between a test movie and all the movies on the data set, print out K nearest neighbors
 *@findMovieByName: check if movie exists, param: movie name, the year
-*
-*
-*
-*
-*
 """
 
 r_cols = ["user_id", "movie_id", "rating"] #column titles
 
-ratings = pd.read_csv("/home/kevin/Documents/Data Science/DataScience-Python3/ml-100k/u.data", sep = '\t', names = r_cols, usecols=range(3), encoding = "ISO-8859-1")#link to movieLens dataset
+file_path = "" #Enter CSV Path
 
+ratings = pd.read_csv(file_path, sep = '\t', names = r_cols, usecols=range(3), encoding = "ISO-8859-1") #Link to movieLens dataset
 
 movieProperties = ratings.groupby('movie_id').agg({'rating': [np.size, np.mean]})
 
 movieNumRatings = pd.DataFrame(movieProperties['rating']['size'])
-movieNormalizedNumRatings = movieNumRatings.apply(lambda x: (x - np.min(x))/(np.max(x) - np.min(x)))
 
+movieNormalizedNumRatings = movieNumRatings.apply(lambda x: (x - np.min(x))/(np.max(x) - np.min(x)))
 
 movieDict = {}
 
-with open (r'/home/kevin/Documents/Data Science/DataScience-Python3/ml-100k/u.item', encoding = "ISO-8859-1") as file_:
+with open (file_path, encoding = "ISO-8859-1") as file_:
 
     temp = ''
 
@@ -40,11 +36,7 @@ with open (r'/home/kevin/Documents/Data Science/DataScience-Python3/ml-100k/u.it
         genres = map(int, genres)
         movieDict[movieID] = (name, np.array(list(genres)), movieNormalizedNumRatings.loc[movieID].get('size'),
         movieProperties.loc[movieID].rating.get('mean'))
-
-
-
-
-
+        
 def ComputeDistance(a, b):
 
     genresA = a[1]
