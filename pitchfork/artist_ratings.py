@@ -1,11 +1,8 @@
-
 import pandas as pd
 import sqlite3
 
-
 #SQLite to Pandas
 #Connect to database
-
 connection = sqlite3.connect("/home/kevin/Documents/Data Science/Projects/pitchfork/database.sqlite")
 
 #DataFrame
